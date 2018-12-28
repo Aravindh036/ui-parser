@@ -4,10 +4,12 @@
         "serviceName": "instance",
         "properties": {
             "name": "sample1",
-            "AvailabilityZone": "zone",
+            "AvailabilityZone": "us-east-1a",
             "KeyName": "dcode",
             "InstanceType": "t2.nano",
-            "ImageID": "ami-041114ddee4a98333"
+            "ImageID": "ami-041114ddee4a98333",
+            "SubnetName":"subnet1",
+            "SecurityGroup":"group2"
         }
     },
     {
@@ -15,16 +17,19 @@
         "serviceName": "instance",
         "properties": {
             "name": "sample2",
-            "AvailabilityZone": "zone",
+            "AvailabilityZone": "us-east-1a",
             "KeyName": "dcode",
             "InstanceType": "t2.nano",
-            "ImageID": "ami-041114ddee4a98333"
+            "ImageID": "ami-041114ddee4a98333",
+            "SubnetName":"subnet2",
+            "SecurityGroup":"group3"
         }
     },
     {
         "id": "subnet0.7223799806676185",
         "serviceName": "subnet",
         "properties": {
+            "name":"subnet1",
             "CidrBlock": "cdir-block1",
             "SubnetType": false,
             "VpcId": "id-1"
@@ -34,6 +39,7 @@
         "id": "subnet0.9644905804909778",
         "serviceName": "subnet",
         "properties": {
+            "name":"subnet2",
             "CidrBlock": "cdir-block-1",
             "SubnetType": false,
             "VpcId": "id-2"
@@ -46,14 +52,17 @@
             "InstancePort": "insatnce-port-number",
             "LoadBalancerPort": "load-port",
             "PolicyNames": "policy names",
-            "Protocol": "protocollllll"
+            "Protocol": "protocollllll",
+            "LoadBalancerName":"loadbalancer1",
+            "SecurityGroup":"group1",
+            "Subnet":"subnet1"
         }
     },
     {
         "id": "security-group0.6587310457055509",
         "serviceName": "security-group",
         "properties": {
-            "GroupName": "group-2",
+            "GroupName": "group2",
             "GroupDescription": "for security",
             "VpcId": "id-2"
         }
@@ -62,7 +71,7 @@
         "id": "security-group0.5102873972498547",
         "serviceName": "security-group",
         "properties": {
-            "GroupName": "group-1",
+            "GroupName": "group1",
             "GroupDescription": "for security",
             "VpcId": "id-1"
         }
@@ -71,7 +80,8 @@
         "id": "database-server0.8422363985381494",
         "serviceName": "database-server",
         "properties": {
-            "DBSecurityGroups": "security-groups",
+            "DBName":"SampleDB",
+            "VPCSecurityGroups": "group4",
             "AllocatedStorage": "3",
             "DBInstanceClass": "db.t2.micro",
             "Engine": "sample-engine",
@@ -83,7 +93,7 @@
         "id": "security-group0.6278792570854488",
         "serviceName": "security-group",
         "properties": {
-            "GroupName": "group-3",
+            "GroupName": "group3",
             "GroupDescription": "for security purpose",
             "VpcId": "id-3"
         }
@@ -92,7 +102,7 @@
         "id": "security-group0.05555611527355597",
         "serviceName": "security-group",
         "properties": {
-            "GroupName": "group-4",
+            "GroupName": "group4",
             "GroupDescription": "for data-base",
             "VpcId": "id-1"
         }

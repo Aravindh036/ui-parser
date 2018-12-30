@@ -1,0 +1,62 @@
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  CPUAlarm:
+    Type: 'AWS::CloudWatch::Alarm'
+    Properties:
+      AlarmDescription: CPU alarm for my instance
+      AlarmActions:
+        - Ref: snsSample
+      MetricName: CPUUtilization
+      Namespace: AWS/EC2
+      Statistic: Average
+      Period: '60'
+      EvaluationPeriods: '3'
+      Threshold: '90'
+      ComparisonOperator: GreaterThanThreshold
+      Dimensions:
+        - Name: InstanceId
+          Value:
+            Ref: sample1
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 0ee3df20-1f97-41fc-a6d1-c60864935fbb
+  sample1:
+    Type: 'AWS::EC2::Instance'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 1cc13a72-cb59-461c-8881-d76a0dd65bb2
+  snsSample:
+    Type: 'AWS::SNS::Topic'
+    Properties: {}
+    Metadata:
+      'AWS::CloudFormation::Designer':
+        id: 921488c4-8933-40f6-8502-0c5ecdd1a899
+Metadata:
+  'AWS::CloudFormation::Designer':
+    1cc13a72-cb59-461c-8881-d76a0dd65bb2:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 240
+        'y': 90
+      z: 1
+      embeds: []
+    0ee3df20-1f97-41fc-a6d1-c60864935fbb:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 60
+        'y': 90
+      z: 1
+      embeds: []
+    921488c4-8933-40f6-8502-0c5ecdd1a899:
+      size:
+        width: 60
+        height: 60
+      position:
+        x: 380
+        'y': 99
+      z: 0

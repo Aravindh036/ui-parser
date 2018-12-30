@@ -108,3 +108,26 @@
         }
     }
 ]
+
+
+AWSTemplateFormatVersion: 2010-09-09
+Resources:
+  Instance:
+    Type: AWS::EC2::Instance
+    Metadata:
+        AWS::CloudFormation::Init:
+            config:
+                InstallAndRun: 
+                    - Install
+                      Configure
+            install:
+                packages:
+                    yum:
+                        httpd: []
+    Properties:
+        ImageId: ami-009d6802948d06e52
+        InstanceType: t2.nano
+        KeyName: dcode
+        SecurityGroupIds:
+            - sg-006c7f7c3a9f5c7a4
+        AvailabilityZone: us-east-1a
